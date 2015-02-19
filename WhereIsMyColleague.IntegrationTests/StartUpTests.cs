@@ -1,8 +1,8 @@
-﻿namespace WhereIsMyColleague.IntegrationTests
-{
-  using Microsoft.Owin.Testing;
-  using NUnit.Framework;
+﻿using Microsoft.Owin.Testing;
+using NUnit.Framework;
 
+namespace WhereIsMyColleague.IntegrationTests
+{
   [TestFixture]
   public class StartUpTests
   {

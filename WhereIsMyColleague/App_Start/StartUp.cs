@@ -1,7 +1,7 @@
-﻿namespace WhereIsMyColleague
-{
-  using Owin;
+﻿using Owin;
 
+namespace WhereIsMyColleague
+{
   public class Startup
   {
     public void Configuration(IAppBuilder app)
