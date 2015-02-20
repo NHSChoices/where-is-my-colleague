@@ -1,5 +1,15 @@
 version: 1.0.{build}
 before_build:
-  - nuget restore
+- nuget restore
 build:
+  project: WhereIsMyColleague.sln
+  publish_wap: true
   verbosity: minimal
+deploy:
+- provider: WebDeploy
+  server: https://whereismycolleague.scm.azurewebsites.net:443/msdeploy.axd?site=whereismycolleague
+  website: whereismycolleague
+  username: $whereismycolleague
+  password:
+    secure: epX63djwCcNjxpwWLCd5KP2rjTQGHKfo4FTY+uIKq1gJCdaZix0Dw6XD2SvWQvFKcN9QkbFw993Plwpb41JlNg==
+  remove_files: true
