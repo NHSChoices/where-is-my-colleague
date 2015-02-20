@@ -1,8 +1,8 @@
-﻿using Microsoft.Owin.Testing;
-using NUnit.Framework;
-
-namespace WhereIsMyColleague.IntegrationTests
+﻿namespace WhereIsMyColleague.IntegrationTests
 {
+  using Microsoft.Owin.Testing;
+  using NUnit.Framework;
+
   [TestFixture]
   public class StartUpTests
   {
@@ -26,7 +26,7 @@ namespace WhereIsMyColleague.IntegrationTests
       var response = _server.HttpClient.GetAsync("/").Result;
       var result = response.Content.ReadAsStringAsync().Result;
 
-      Assert.That(result, Is.EqualTo("Hello, world."));
+      Assert.That(result, Is.EqualTo("Move along, nothing to see here..."));
     }
   }
 }
