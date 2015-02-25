@@ -28,5 +28,6 @@
 
       Assert.That(result, Is.EqualTo("Move along, nothing to see here ...."));
     }
+
   }
 }
