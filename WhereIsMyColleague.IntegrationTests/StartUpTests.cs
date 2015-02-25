@@ -26,7 +26,7 @@
       var response = _server.HttpClient.GetAsync("/").Result;
       var result = response.Content.ReadAsStringAsync().Result;
 
-      Assert.That(result, Is.EqualTo("Move along, nothing to see here..."));
+      Assert.That(result, Is.EqualTo("Move along, nothing to see here ...."));
     }
   }
 }
