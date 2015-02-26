@@ -13,3 +13,11 @@ deploy:
   password:
     secure: epX63djwCcNjxpwWLCd5KP2rjTQGHKfo4FTY+uIKq1gJCdaZix0Dw6XD2SvWQvFKcN9QkbFw993Plwpb41JlNg==
   remove_files: true
+notifications:
+- provider: Slack
+  channel: wfhsite
+  auth_token:
+    secure: mWg4X/XBMQKvqyywkdki6Py9mhMezKro6spSAtgJIaTsI0I9wogumgzHcH+Bd6+P
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
