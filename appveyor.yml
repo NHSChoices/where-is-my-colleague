@@ -13,7 +13,7 @@ deploy:
   password:
     secure: epX63djwCcNjxpwWLCd5KP2rjTQGHKfo4FTY+uIKq1gJCdaZix0Dw6XD2SvWQvFKcN9QkbFw993Plwpb41JlNg==
   remove_files: true
-  artifact: WhereIsMyColleague.zip
+  artifact: WhereIsMyColleague.MVC.zip
   on:
     branch: master
 notifications:
