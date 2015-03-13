@@ -1,4 +1,4 @@
-﻿namespace WhereIsMyColleague.MVC.Controllers
+﻿namespace WhereIsMyColleague.MVC.Repositories
 {
     public interface IUserRepository
     {
