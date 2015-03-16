@@ -228,10 +228,15 @@ II.2.12 &lt;HandlesEvent /&gt;&#xD;
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=PrivateStaticFields/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="_" Suffix="" Style="aaBb" /&gt;</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=590EC72DBFC24E41B13C36AF2BEB9E1F/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=590EC72DBFC24E41B13C36AF2BEB9E1F/AbsolutePath/@EntryValue">D:\Work\NHSChoices\DEV\V45\WebSite\NHSChoices.OrganisationAPI\NHSChoices.OrganisationAPI.sln.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=CE00F04293AF1B4997275290C2606C35/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=CE00F04293AF1B4997275290C2606C35/AbsolutePath/@EntryValue">C:\code\where-is-my-colleague\WhereIsMyColleague.sln.DotSettings</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=F13FFC576B5B2148A73935FC52A80CA3/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=F13FFC576B5B2148A73935FC52A80CA3/AbsolutePath/@EntryValue">D:\Work\NHSChoices\DEV\v39\website\nhschoices.organisationapi\NHSChoices.OrganisationAPI.sln.DotSettings</s:String>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File590EC72DBFC24E41B13C36AF2BEB9E1F/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File590EC72DBFC24E41B13C36AF2BEB9E1F/IsOn/@EntryValue">False</s:Boolean>
 	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File590EC72DBFC24E41B13C36AF2BEB9E1F/RelativePriority/@EntryValue">0.5</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileCE00F04293AF1B4997275290C2606C35/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileCE00F04293AF1B4997275290C2606C35/RelativePriority/@EntryValue">2</s:Double>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileF13FFC576B5B2148A73935FC52A80CA3/@KeyIndexDefined">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileF13FFC576B5B2148A73935FC52A80CA3/IsOn/@EntryValue">False</s:Boolean>
 	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileF13FFC576B5B2148A73935FC52A80CA3/RelativePriority/@EntryValue">1</s:Double>

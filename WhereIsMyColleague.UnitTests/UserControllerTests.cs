@@ -1,68 +1,67 @@
-﻿using System.Linq;
-using NUnit.Framework;
-using WhereIsMyColleague.MVC.Controllers;
-using WhereIsMyColleague.MVC.Models;
-
-namespace WhereIsMyColleague.UnitTests
+﻿namespace WhereIsMyColleague.UnitTests
 {
-    [TestFixture]
-    public class UserControllerTests
+  using System.Linq;
+  using MVC.Controllers;
+  using MVC.Models;
+  using MVC.Repositories;
+  using NUnit.Framework;
+
+  [TestFixture]
+  public class UserControllerTests
+  {
+    [SetUp]
+    public void Setup()
     {
-
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        [Test]
-        public void controller_should_populate_user_list()
-        {
-            //Arrange
-            var fakeUserRepository = new FakeUserRepository(new string[] { "1", "2", "3", "4", "5" });
-
-            var userController = new UserController(fakeUserRepository);
- 
-            //Act
-            var action = userController.Index();
-          
-            //Assert
-            var usersViewModel = (action.ViewData.Model as UsersViewModel);
-
-            Assert.That(usersViewModel.Users.Count(), Is.EqualTo(5));
-        }
-
-        [Test]
-        public void controller_should_handle_an_empty_user_list()
-        {
-            //Arrange
-            var fakeUserRepository = new FakeUserRepository(new string[] { });
-
-            var userController = new UserController(fakeUserRepository);
- 
-            //Act
-            var action = userController.Index();
-          
-            //Assert
-            var usersViewModel = (action.ViewData.Model as UsersViewModel);
-
-            Assert.That(usersViewModel.Users.Count(), Is.EqualTo(0));
-        }
-
     }
 
-    public class FakeUserRepository : IUserRepository
+    [Test]
+    public void controller_should_handle_an_empty_user_list()
     {
-        private readonly string[] _userList;
+      //Arrange
+      var fakeUserRepository = new FakeUserRepository(new string[] { });
 
-        public FakeUserRepository(string[] userList)
-        {
-            _userList = userList;
-        }
+      var userController = new UserController(fakeUserRepository);
 
-        public string[] GetUsers()
-        {
-            return _userList;
-        }
+      //Act
+      var action = userController.Index();
+
+      //Assert
+      var usersViewModel = (action.ViewData.Model as UsersViewModel);
+
+      Assert.That(usersViewModel.Users.Count(), Is.EqualTo(0));
     }
 
+    [Test]
+    public void controller_should_populate_user_list()
+    {
+      //Arrange
+      var fakeUserRepository =
+        new FakeUserRepository(new[] { "1", "2", "3", "4", "5" });
+
+      var userController = new UserController(fakeUserRepository);
+
+      //Act
+      var action = userController.Index();
+
+      //Assert
+      var usersViewModel = (action.ViewData.Model as UsersViewModel);
+
+      Assert.That(usersViewModel.Users.Count(), Is.EqualTo(5));
+    }
+  }
+
+  public class FakeUserRepository : IUserRepository
+  {
+    private readonly string[] _userList;
+
+    public FakeUserRepository(string[] userList)
+    {
+      _userList = userList;
+    }
+
+    public string[] GetUsers()
+    {
+      return _userList;
+    }
+  }
 }
