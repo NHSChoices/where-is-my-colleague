@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WhereIsMyColleague.Web.Models.User>
+
+@{
+  ViewBag.Title = "User List Page";
+}
+
+@if (@Model.Any())
+{
+  foreach (var user in @Model)
+  {
+    <li>@user.Name is located @@ @user.Location</li>
+  }
+}
