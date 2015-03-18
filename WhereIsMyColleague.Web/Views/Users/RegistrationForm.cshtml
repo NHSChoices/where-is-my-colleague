@@ -1,0 +1,10 @@
+﻿@model WhereIsMyColleague.Web.Models.User
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(x => x.Name)
+  @Html.EditorFor(x => x.Name)
+  @Html.LabelFor(x => x.Location)
+  @Html.EnumDropDownListFor(x => x.Location)
+  <input type="submit" value="Register" />
+}
