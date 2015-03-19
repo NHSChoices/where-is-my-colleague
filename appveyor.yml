@@ -13,9 +13,17 @@ deploy:
   password:
     secure: epX63djwCcNjxpwWLCd5KP2rjTQGHKfo4FTY+uIKq1gJCdaZix0Dw6XD2SvWQvFKcN9QkbFw993Plwpb41JlNg==
   remove_files: true
-  artifact: WhereIsMyColleague.MVC.zip
-  on:
-    branch: master
+  app_offline: true
+  artifact: WhereIsMyColleague.Web.zip
+- provider: WebDeploy
+  server: https://where-is-fred.scm.azurewebsites.net:443/msdeploy.axd?site=where-is-fred
+  website: where-is-fred
+  username: $where-is-fred
+  password:
+    secure: 7Iee2xCtOBMj5900kcoRSuLu1O3AUeFPSz3nob/WTParsuR9NGGHrymaKcKTRjravlRpoKj2wLw2HA7+Q6F4GA==
+  remove_files: true
+  app_offline: true
+  artifact: WhereIsMyColleague.API.zip
 notifications:
 - provider: Slack
   channel: wfhsite
