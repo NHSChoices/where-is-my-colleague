@@ -1,16 +1,16 @@
 ﻿namespace WhereIsMyColleague.Web
 {
-  using System.Web.Optimization;
+    using System.Web.Optimization;
 
-  public class BundleConfig
-  {
-    // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
-    public static void RegisterBundles(BundleCollection bundles)
+    public class BundleConfig
     {
-      bundles.Add(
-        new StyleBundle("~/Content/css").Include(
-          "~/Content/bootstrap.css",
-          "~/Content/site.css"));
+        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(
+                new StyleBundle("~/Content/css").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Content/site.css"));
+        }
     }
-  }
 }

@@ -1,4 +1,4 @@
-﻿namespace WhereIsMyColleague.Web.Models
+﻿namespace WhereIsMyColleague.API.Models
 {
     public enum LocationEnum
     {
