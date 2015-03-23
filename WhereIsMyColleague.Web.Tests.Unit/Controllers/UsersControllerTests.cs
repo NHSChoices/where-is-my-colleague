@@ -14,6 +14,7 @@
     private UsersController _controller;
     private IUserRepository _userRepository;
     private readonly User _userToRegister = new User();
+    private readonly UserDto _userBeingRegistered = new UserDto();
 
     [SetUp]
     public void Setup()
