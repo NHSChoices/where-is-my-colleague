@@ -6,8 +6,16 @@
 
 @if (@Model.Any())
 {
-  foreach (var user in @Model)
-  {
-    <li>@user.Name is located @@ @user.Location</li>
-  }
+    foreach (var user in @Model)
+    {
+
+        if (user.Duration.ToString() == "AllDay")
+        {
+            <li>@user.Name is located @@ @user.Location, All Day</li>
+        }
+        else
+        {
+            <li>@user.Name is located @@ @user.Location in the @user.Duration</li>
+        }
+    }
 }

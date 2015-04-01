@@ -1,41 +1,57 @@
 ﻿namespace WhereIsMyColleague.Web.Controllers
 {
-  using System.Web.Mvc;
-  using Models;
-  using Repositories;
+    using System.Web.Mvc;
+    using Models;
+    using Repositories;
 
-  [RoutePrefix("Users")]
-  public class UsersController : Controller
-  {
-    private readonly IUserRepository _userRepository;
-
-    public UsersController()
-      : this(new UserRepository())
+    [RoutePrefix("Users")]
+    public class UsersController : Controller
     {
-    }
+        private readonly IUserRepository _userRepository;
 
-    public UsersController(IUserRepository userRepository)
-    {
-      _userRepository = userRepository;
-    }
+        public UsersController()
+            : this(new UserRepository())
+        {
+        }
 
-    [Route]
-    public ViewResult Status()
-    {
-      return View(_userRepository.GetAll());
-    }
+        public UsersController(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
 
-    [HttpPost]
-    [Route("register")]
-    public ActionResult Register(User user)
-    {
-      return View(_userRepository.Register(user));
-    }
+        [Route]
+        public ViewResult Status()
+        {
+            return View(_userRepository.GetAll());
+        }
 
-    [Route("register")]
-    public ActionResult RegistrationForm()
-    {
-      return View();
+        [HttpPost]
+        [Route("register")]
+        public ActionResult Register(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("RegistrationForm");
+            }
+
+            //if (user.Duration.ToString() != "AllDay" && user.SecondLocation == null)
+            //{
+            //    return View("RegistrationForm");
+            //}
+
+            //if (user.Location == user.SecondLocation)
+            //{
+            //    user.Duration = 0;
+            //}
+
+            return View(_userRepository.Register(user));
+        }
+
+        [HttpGet]
+        [Route("register")]
+        public ActionResult RegistrationForm()
+        {
+            return View();
+        }
     }
-  }
 }
