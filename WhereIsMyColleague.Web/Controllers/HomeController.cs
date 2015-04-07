@@ -1,13 +1,13 @@
 ﻿namespace WhereIsMyColleague.Web.Controllers
 {
-    using System.Web.Mvc;
+  using System.Web.Mvc;
 
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    [Route]
+    public ActionResult Index()
     {
-        [Route]
-        public ActionResult Index()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }

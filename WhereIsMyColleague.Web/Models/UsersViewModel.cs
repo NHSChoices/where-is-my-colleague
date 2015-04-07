@@ -1,6 +1,6 @@
 ﻿namespace WhereIsMyColleague.Web.Models
 {
-    public class UsersViewModel
-    {
-    }
+  public class UsersViewModel
+  {
+  }
 }
