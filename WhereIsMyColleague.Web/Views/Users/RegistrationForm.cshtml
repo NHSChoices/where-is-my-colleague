@@ -1,15 +1,16 @@
 ﻿@model WhereIsMyColleague.Web.Models.User
 
+<div class="registration-form"></div>
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true)
+  @Html.ValidationSummary(true)
 
-    @Html.LabelFor(x => x.Name)
-    @Html.EditorFor(x => x.Name)
-    @Html.LabelFor(x => x.Location)
-    @Html.EnumDropDownListFor(x => x.Location)
-    @Html.LabelFor(x => x.Duration)
-    @Html.EnumDropDownListFor(x => x.Duration)
+  @Html.LabelFor(x => x.Name)
+  @Html.EditorFor(x => x.Name)
+  @Html.LabelFor(x => x.Location)
+  @Html.EnumDropDownListFor(x => x.Location)
+  @Html.LabelFor(x => x.Duration)
+  @Html.EnumDropDownListFor(x => x.Duration)
 
-    <input type="submit" value="Register"/>
+  <input type="submit" value="Register" />
 }

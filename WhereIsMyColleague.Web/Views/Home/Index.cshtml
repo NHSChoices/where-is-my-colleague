@@ -4,6 +4,12 @@
 
 <h1>Where are your colleagues?</h1>
 
-@Html.ActionLink("Status", "Status", "Users")
+<div class="registerlinks">
+  <div class="status">
+    @Html.ActionLink("Status", "Status", "Users")
+  </div>
 
-@Html.ActionLink("Register", "Register", "Users")
+  <div class="register">
+    @Html.ActionLink("Register", "Register", "Users")
+  </div>
+</div>
