@@ -1,10 +1,10 @@
 ﻿namespace WhereIsMyColleague.API.Controllers
 {
+  using Models;
+  using Repositories;
   using System;
   using System.Linq;
   using System.Web.Http;
-  using Models;
-  using Repositories;
 
   [RoutePrefix("users")]
   public class UsersController : ApiController
@@ -29,8 +29,8 @@
       var users = userList.Select(u => new UserDto
       {
         Name = u.RowKey,
-        Location = (LocationEnum) Enum.Parse(typeof (LocationEnum), u.PartitionKey),
-        Duration = (DurationEnum) Enum.Parse(typeof (DurationEnum), u.Duration)
+        Location = (LocationEnum)Enum.Parse(typeof(LocationEnum), u.PartitionKey),
+        Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), u.Duration)
       });
 
       return Ok(users);
@@ -60,7 +60,7 @@
 
       _userRepository.Register(user);
 
-      return CreatedAtRoute("GetUserById", new {id = userDto.Name}, userDto);
+      return CreatedAtRoute("GetUserById", new { id = userDto.Name }, userDto);
     }
 
     [Route("{id}")]

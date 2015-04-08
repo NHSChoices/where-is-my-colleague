@@ -1,10 +1,10 @@
 ﻿namespace WhereIsMyColleague.Web.Tests.Unit.Controllers
 {
-  using System.Collections.Generic;
-  using System.Web.Mvc;
   using Models;
   using NSubstitute;
   using NUnit.Framework;
+  using System.Collections.Generic;
+  using System.Web.Mvc;
   using Web.Controllers;
   using Web.Repositories;
 
@@ -50,7 +50,7 @@
 
       _userRepository.Register(_userToRegister).Returns(registeredUser);
 
-      var result = (ViewResult) _controller.Register(_userToRegister);
+      var result = (ViewResult)_controller.Register(_userToRegister);
 
       Assert.That(result, Is.Not.Null);
       Assert.That(result.Model, Is.EqualTo(registeredUser));

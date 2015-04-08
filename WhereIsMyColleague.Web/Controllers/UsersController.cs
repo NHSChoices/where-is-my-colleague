@@ -1,8 +1,8 @@
 ﻿namespace WhereIsMyColleague.Web.Controllers
 {
-  using System.Web.Mvc;
   using Models;
   using Repositories;
+  using System.Web.Mvc;
 
   [RoutePrefix("Users")]
   public class UsersController : Controller
