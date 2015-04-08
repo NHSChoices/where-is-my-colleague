@@ -26,26 +26,26 @@
         _tableClient = _storageAccount.CreateCloudTableClient();
     }
 
-    public IEnumerable<User> GetAll()
+    public IEnumerable<UserDTO> GetAll()
     {
       var table = Table("whereIsMyColleagueTestStorage");
-      var results = (from user in table.CreateQuery<User>()
-                     select user).ToList();
+      var results = (from user in table.CreateQuery<UserDTO>()
+        select user).ToList();
       return results;
     }
 
-    public void Register(User user)
+    public void Register(UserDTO user)
     {
       var table = Table("whereIsMyColleagueTestStorage");
 
-      TableQuery<User> query = new TableQuery<User>()
+      TableQuery<UserDTO> query = new TableQuery<UserDTO>()
         .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, user.RowKey));
 
       var queryList = table.ExecuteQuery(query).ToList();
 
       if (queryList.Count() != 0)
       {
-        foreach (User entity in queryList)
+        foreach (UserDTO entity in queryList)
         {
           TableOperation deleteOperation = TableOperation.Delete(entity);
           table.Execute(deleteOperation);
@@ -64,8 +64,8 @@
     public void Delete(string id)
     {
       var table = Table("whereIsMyColleagueTestStorage");
-      var retrievedUser = (from user in table.CreateQuery<User>()
-                           select user).Where(u => u.RowKey == id).ToList();
+      var retrievedUser = (from user in table.CreateQuery<UserDTO>()
+        select user).Where(u => u.RowKey == id).ToList();
 
       string rowKey = id;
       string partitionKey = "";
@@ -74,9 +74,9 @@
         partitionKey = user.PartitionKey;
       }
 
-      TableOperation retrieveOperation = TableOperation.Retrieve<User>(partitionKey, rowKey);
+      TableOperation retrieveOperation = TableOperation.Retrieve<UserDTO>(partitionKey, rowKey);
       TableResult retrievedResult = table.Execute(retrieveOperation);
-      User deleteEntity = (User)retrievedResult.Result;
+      UserDTO deleteEntity = (UserDTO) retrievedResult.Result;
       if (deleteEntity != null)
       {
         TableOperation deleteOperation = TableOperation.Delete(deleteEntity);

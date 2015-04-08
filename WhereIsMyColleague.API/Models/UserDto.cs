@@ -1,16 +1,19 @@
-namespace WhereIsMyColleague.API.Models
+﻿namespace WhereIsMyColleague.API.Models
 {
-  using System.ComponentModel.DataAnnotations;
+  using Microsoft.WindowsAzure.Storage.Table;
 
-  public class UserDto
+  public class UserDTO : TableEntity
   {
-    [Required]
-    public string Name { get; set; }
+    public UserDTO(string partitionKey, string rowKey)
+    {
+      PartitionKey = partitionKey;
+      RowKey = rowKey;
+    }
 
-    [Required]
-    public LocationEnum? Location { get; set; }
+    public UserDTO()
+    {
+    }
 
-    [Required]
-    public DurationEnum? Duration { get; set; }
+    public string Duration { get; set; }
   }
 }
