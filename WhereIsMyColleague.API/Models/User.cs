@@ -1,7 +1,7 @@
 ﻿namespace WhereIsMyColleague.API.Models
 {
-  using System.ComponentModel.DataAnnotations;
   using Microsoft.WindowsAzure.Storage.Table;
+  using System.ComponentModel.DataAnnotations;
 
   public class User : TableEntity
   {

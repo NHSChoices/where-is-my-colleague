@@ -1,7 +1,7 @@
 ﻿namespace WhereIsMyColleague.API
 {
-  using System.Web.Http;
   using Owin;
+  using System.Web.Http;
 
   public class Startup
   {
@@ -9,7 +9,7 @@
     {
       var config = new HttpConfiguration();
       config.MapHttpAttributeRoutes();
-      config.Routes.MapHttpRoute("DefaultApi", "{controller}/{id}", new {id = RouteParameter.Optional});
+      config.Routes.MapHttpRoute("DefaultApi", "{controller}/{id}", new { id = RouteParameter.Optional });
 
       app.UseWebApi(config);
     }

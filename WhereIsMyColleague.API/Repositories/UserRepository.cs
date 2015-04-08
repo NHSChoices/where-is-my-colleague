@@ -1,11 +1,11 @@
 ﻿namespace WhereIsMyColleague.API.Repositories
 {
-  using System.Collections.Generic;
-  using System.Linq;
   using Microsoft.WindowsAzure;
   using Microsoft.WindowsAzure.Storage;
   using Microsoft.WindowsAzure.Storage.Table;
   using Models;
+  using System.Collections.Generic;
+  using System.Linq;
 
   public class UserRepository : IUserRepository
   {
@@ -30,7 +30,7 @@
     {
       var table = Table("whereIsMyColleagueTestStorage");
       var results = (from user in table.CreateQuery<User>()
-        select user).ToList();
+                     select user).ToList();
       return results;
     }
 
@@ -65,7 +65,7 @@
     {
       var table = Table("whereIsMyColleagueTestStorage");
       var retrievedUser = (from user in table.CreateQuery<User>()
-        select user).Where(u => u.RowKey == id).ToList();
+                           select user).Where(u => u.RowKey == id).ToList();
 
       string rowKey = id;
       string partitionKey = "";
@@ -76,7 +76,7 @@
 
       TableOperation retrieveOperation = TableOperation.Retrieve<User>(partitionKey, rowKey);
       TableResult retrievedResult = table.Execute(retrieveOperation);
-      User deleteEntity = (User) retrievedResult.Result;
+      User deleteEntity = (User)retrievedResult.Result;
       if (deleteEntity != null)
       {
         TableOperation deleteOperation = TableOperation.Delete(deleteEntity);

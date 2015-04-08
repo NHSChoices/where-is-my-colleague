@@ -1,12 +1,12 @@
 ﻿namespace WhereIsMyColleague.Web.Repositories
 {
+  using Models;
   using System;
   using System.Collections.Generic;
   using System.Linq;
   using System.Net.Http;
   using System.Net.Http.Headers;
   using System.Web.Configuration;
-  using Models;
 
   public class UserRepository : IUserRepository
   {
@@ -24,7 +24,7 @@
 
     public IEnumerable<User> GetAll()
     {
-      var client = new HttpClient {BaseAddress = new Uri(ApiUrl)};
+      var client = new HttpClient { BaseAddress = new Uri(ApiUrl) };
 
       client.DefaultRequestHeaders.Accept.Add(
         new MediaTypeWithQualityHeaderValue("application/json"));
@@ -53,7 +53,7 @@
         Duration = user.Duration
       };
 
-      var httpClient = new HttpClient {BaseAddress = new Uri(ApiUrl)};
+      var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) };
 
       var response = httpClient.PostAsJsonAsync("users", userDto).Result;
       if (response.IsSuccessStatusCode)

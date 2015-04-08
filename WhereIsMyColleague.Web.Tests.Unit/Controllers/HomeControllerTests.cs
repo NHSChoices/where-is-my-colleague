@@ -1,7 +1,7 @@
 ﻿namespace WhereIsMyColleague.Web.Tests.Unit.Controllers
 {
-  using System.Web.Mvc;
   using NUnit.Framework;
+  using System.Web.Mvc;
   using Web.Controllers;
 
   [TestFixture]
