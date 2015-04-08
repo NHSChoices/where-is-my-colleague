@@ -29,9 +29,15 @@
     [Route("register")]
     public ActionResult Register(User user)
     {
+      if (!ModelState.IsValid)
+      {
+        return View("RegistrationForm");
+      }
+
       return View(_userRepository.Register(user));
     }
 
+    [HttpGet]
     [Route("register")]
     public ActionResult RegistrationForm()
     {

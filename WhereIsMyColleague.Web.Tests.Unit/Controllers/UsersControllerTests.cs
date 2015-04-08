@@ -11,9 +11,10 @@
   [TestFixture]
   public class UsersControllerTests
   {
+    private readonly UserDto _userBeingRegistered = new UserDto();
+    private readonly User _userToRegister = new User();
     private UsersController _controller;
     private IUserRepository _userRepository;
-    private readonly User _userToRegister = new User();
 
     [SetUp]
     public void Setup()
@@ -49,7 +50,7 @@
 
       _userRepository.Register(_userToRegister).Returns(registeredUser);
 
-      var result = (ViewResult)_controller.Register(_userToRegister);
+      var result = (ViewResult) _controller.Register(_userToRegister);
 
       Assert.That(result, Is.Not.Null);
       Assert.That(result.Model, Is.EqualTo(registeredUser));
