@@ -5,10 +5,8 @@
 
   public interface IUserRepository
   {
-    IEnumerable<User> GetAll();
-
-    void Register(User user);
-
+    IEnumerable<UserDTO> GetAll();
+    void Register(UserDTO user);
     void Delete(string id);
   }
 }

@@ -54,7 +54,7 @@
     public void get_request_to_user_endpoint_should_return_four_users()
     {
       var response = _server.HttpClient.GetAsync("/users").Result;
-      var result = response.Content.ReadAsAsync<IEnumerable<User>>().Result;
+      var result = response.Content.ReadAsAsync<IEnumerable<UserRequest>>().Result;
 
       Assert.AreEqual(4, result.Count());
     }

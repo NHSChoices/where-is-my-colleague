@@ -26,7 +26,7 @@
     public IHttpActionResult Get()
     {
       var userList = _userRepository.GetAll();
-      var users = userList.Select(u => new UserDto
+      var users = userList.Select(u => new UserRequest
       {
         Name = u.RowKey,
         Location = (LocationEnum)Enum.Parse(typeof(LocationEnum), u.PartitionKey),
@@ -37,30 +37,30 @@
     }
 
     [Route("{id}", Name = "GetUserById")]
-    public UserDto GetUser(int id)
+    public UserRequest GetUser(int id)
     {
-      return null;
+      throw new Exception("Not yet implemented");
     }
 
     [Route]
     [HttpPost]
-    public IHttpActionResult Post(UserDto userDto)
+    public IHttpActionResult Post(UserRequest userRequest)
     {
       if (!ModelState.IsValid)
       {
         return BadRequest(ModelState);
       }
 
-      var user = new User
+      var user = new UserDTO
       {
-        RowKey = userDto.Name,
-        PartitionKey = userDto.Location.ToString(),
-        Duration = userDto.Duration.ToString()
+        RowKey = userRequest.Name,
+        PartitionKey = userRequest.Location.ToString(),
+        Duration = userRequest.Duration.ToString()
       };
 
       _userRepository.Register(user);
 
-      return CreatedAtRoute("GetUserById", new { id = userDto.Name }, userDto);
+      return CreatedAtRoute("GetUserById", new {id = user.RowKey}, user);
     }
 
     [Route("{id}")]

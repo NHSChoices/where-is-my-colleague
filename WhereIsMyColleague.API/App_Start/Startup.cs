@@ -9,7 +9,6 @@
     {
       var config = new HttpConfiguration();
       config.MapHttpAttributeRoutes();
-      config.Routes.MapHttpRoute("DefaultApi", "{controller}/{id}", new { id = RouteParameter.Optional });
 
       app.UseWebApi(config);
     }
