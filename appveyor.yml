@@ -29,7 +29,7 @@ deploy:
   artifact: WhereIsMyColleague.API.zip
   on:
     branch: master
-notifications:
+notifications: 
 - provider: Slack
   channel: wfhsite
   auth_token:

@@ -19,19 +19,22 @@
         @Html.ActionLink("Where are your colleagues?", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
       </div>
       <div class="navbar-collapse collapse">
+        <div class="float-right">
+          <section id="login">
+            @Html.Partial("_LoginPartial")
+          </section>
+        </div>
         <ul class="nav navbar-nav">
           <li>@Html.ActionLink("Status", "Status", "Users")</li>
           <li>@Html.ActionLink("Register", "Register", "Users")</li>
+          <li>@Html.ActionLink("Login/Signup", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
         </ul>
       </div>
     </div>
   </div>
   <div class="container body-content">
     @RenderBody()
-    <hr />
-    <footer>
-      <p>&copy; @DateTime.Now.Year</p>
-    </footer>
+    <footer></footer>
   </div>
 </body>
 </html>

@@ -56,6 +56,7 @@
       Assert.That(result.Model, Is.EqualTo(registeredUser));
     }
 
+    [Ignore]
     [Test]
     public void registrationform_should_return_view()
     {

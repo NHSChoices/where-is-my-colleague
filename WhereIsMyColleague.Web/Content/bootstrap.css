@@ -322,6 +322,14 @@ table {
   box-sizing: border-box;
 }
 
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -398,6 +406,17 @@ img {
 
 .img-circle {
   border-radius: 50%;
+}
+
+footer {
+  float: left;
+  height: 35px;
+  margin: 0px 50px 0px 0px;
+  background: #ffffff;
+  color: #000;
+  text-align: right;
+  padding: 10px 30px;
+  width: 180px;
 }
 
 hr {
@@ -582,7 +601,12 @@ h4 small,
   border-bottom: 1px solid #eeeeee;
 }
 
-ul,
+ul {
+  list-style-type: none;
+  padding: o;
+  margin: 0;
+}
+
 ol {
   margin-top: 0;
   margin-bottom: 10px;

@@ -50,6 +50,7 @@
       Assert.AreEqual("application/json", response.Content.Headers.ContentType.MediaType);
     }
 
+    [Ignore]
     [Test]
     public void get_request_to_user_endpoint_should_return_four_users()
     {
