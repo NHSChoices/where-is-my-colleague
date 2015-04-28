@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<WhereIsMyColleague.Web.Models.User>
 
 @{
-    ViewBag.Title = "User List Page";
+  ViewBag.Title = "User List Page";
 }
 
 @if (@Model.Any())
 {
-    foreach (var user in @Model)
+  foreach (var user in @Model)
+  {
+    if (user.Duration.ToString() == "AllDay")
     {
-        if (user.Duration.ToString() == "AllDay")
-        {
-            <li>@user.Name is located @@ @user.Location, All Day</li>
-        }
-        else
-        {
-            <li>@user.Name is located @@ @user.Location in the @user.Duration</li>
-        }
+      <li>@user.Name is located @@ @user.Location, All Day</li>
     }
+    else
+    {
+      <li>@user.Name is located @@ @user.Location in the @user.Duration</li>
+    }
+  }
 }
