@@ -1,6 +1,5 @@
 ﻿namespace WhereIsMyColleague.Web.Controllers
 {
-  using Microsoft.Ajax.Utilities;
   using Models;
   using Repositories;
   using System.Web.Mvc;

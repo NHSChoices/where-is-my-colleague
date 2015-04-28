@@ -15,5 +15,7 @@
     }
 
     public string Duration { get; set; }
+
+    public string TimeStamp { get; set; }
   }
 }

@@ -9,5 +9,7 @@ namespace WhereIsMyColleague.Web.Models
     public DurationEnum? Duration { get; set; }
 
     public virtual LocationEnum? SecondLocation { get; set; }
+
+    public string TimeStamp { get; set; }
   }
 }

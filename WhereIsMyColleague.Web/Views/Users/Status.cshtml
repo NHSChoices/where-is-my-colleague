@@ -2,11 +2,14 @@
 
 @{
   ViewBag.Title = "User List Page";
+  var dateTime = DateTime.Now.ToShortDateString();
 }
+
+
 
 @if (@Model.Any())
 {
-  foreach (var user in @Model)
+  foreach (var user in @Model.Where(user => user.TimeStamp == dateTime))
   {
     if (user.Duration.ToString() == "AllDay")
     {

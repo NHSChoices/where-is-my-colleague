@@ -14,5 +14,7 @@
 
     [Required(ErrorMessage = "Please select a duration")]
     public DurationEnum? Duration { get; set; }
+
+    public string TimeStamp { get; set; }
   }
 }
