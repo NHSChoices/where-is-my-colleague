@@ -8,11 +8,11 @@
     public static void RegisterAuth()
     {
       OAuthWebSecurity.RegisterMicrosoftClient(
-          clientId: ConfigurationManager.AppSettings["MicrosoftClientSecret"],
+          clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
           clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
       OAuthWebSecurity.RegisterTwitterClient(
-          consumerKey: ConfigurationManager.AppSettings["TwitterClientID"],
+          consumerKey: ConfigurationManager.AppSettings["TwitterClientId"],
           consumerSecret: ConfigurationManager.AppSettings["TwitterClientSecret"]);
     }
   }
