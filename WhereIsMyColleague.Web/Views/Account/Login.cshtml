@@ -10,7 +10,7 @@
 
 <section class="float-left" id="socialLoginForm">
   <h2>Signup</h2>
-  @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = "https://login.live.com/oauth20_desktop.srf" })
+  @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
   <p>Please not that using any provider other than Google will require you to create a local account as well.</p>
 </section>
 
