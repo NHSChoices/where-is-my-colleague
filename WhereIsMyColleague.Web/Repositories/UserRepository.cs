@@ -37,7 +37,8 @@
         {
           Name = d.Name,
           Location = d.Location,
-          Duration = d.Duration
+          Duration = d.Duration,
+          TimeStamp = d.TimeStamp
         });
         return users;
       }
@@ -50,7 +51,8 @@
       {
         Name = user.Name,
         Location = user.Location,
-        Duration = user.Duration
+        Duration = user.Duration,
+        TimeStamp = DateTime.Now.ToShortDateString()
       };
 
       var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) };

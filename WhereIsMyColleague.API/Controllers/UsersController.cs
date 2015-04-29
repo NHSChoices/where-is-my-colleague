@@ -30,7 +30,8 @@
       {
         Name = u.RowKey,
         Location = (LocationEnum)Enum.Parse(typeof(LocationEnum), u.PartitionKey),
-        Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), u.Duration)
+        Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), u.Duration),
+        TimeStamp = u.TimeStamp
       });
 
       return Ok(users);
@@ -55,7 +56,8 @@
       {
         RowKey = userRequest.Name,
         PartitionKey = userRequest.Location.ToString(),
-        Duration = userRequest.Duration.ToString()
+        Duration = userRequest.Duration.ToString(),
+        TimeStamp = userRequest.TimeStamp
       };
 
       _userRepository.Register(user);

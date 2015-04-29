@@ -10,5 +10,6 @@ namespace WhereIsMyColleague.API.Models
     public LocationEnum? Location { get; set; }
     [Required]
     public DurationEnum? Duration { get; set; }
+    public string TimeStamp { get; set; }
   }
 }
