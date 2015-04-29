@@ -2,11 +2,11 @@
 
 @if (Model != null)
 {
-  <h2>Hooray!</h2>
-  <p>@Model.Name has just been registered as working from @Model.Location.</p>
+    <h2>Hooray!</h2>
+    <p>@Model.Name has just been registered as working from @Html.DisplayFor(model => model.Location).</p>
 }
 else
 {
-  <h2>Oh noes!</h2>
-  <p>Something has gone wrong, please try again.</p>
+    <h2>Oh noes!</h2>
+    <p>Something has gone wrong, please try again.</p>
 }
