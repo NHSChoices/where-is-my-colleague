@@ -4,17 +4,13 @@
   ViewBag.Title = "Log in";
 }
 
-<hgroup class="title">
-  <h1>@ViewBag.Title.</h1>
-</hgroup>
-
-<section class="float-left" id="socialLoginForm">
-  <h2>Signup</h2>
+<section class="float-left" id="social-login-form">
+  <h2 class="login-header">Signup</h2>
   @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
-  <p>Please not that using any provider other than Google will require you to create a local account as well.</p>
+  <p>Please note that in order to login in you must select a provider and create an account for the site.</p>
 </section>
 
-<section id="loginForm" class="float-right">
+<section id="login-form" class="float-right">
   <h2>Please login here</h2>
   @using (Html.BeginForm("Login", "Account"))
   {
@@ -22,22 +18,16 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-      <ul>
-        <li>
-          @Html.LabelFor(m => m.UserName)
-          @Html.TextBoxFor(m => m.UserName)
-          @Html.ValidationMessageFor(m => m.UserName)
-        </li>
-        <li>
-          @Html.LabelFor(m => m.Password)
-          @Html.PasswordFor(m => m.Password)
+          @Html.LabelFor(m => m.UserName)<br/>
+          @Html.TextBoxFor(m => m.UserName)<br/><br/>
+          @Html.ValidationMessageFor(m => m.UserName)<br/>
+
+          @Html.LabelFor(m => m.Password)<br/>
+          @Html.PasswordFor(m => m.Password)<br/>
           @Html.ValidationMessageFor(m => m.Password)
-        </li>
-        <li>
+
           @Html.CheckBoxFor(m => m.RememberMe)
-          @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-        </li>
-      </ul>
+          @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })<br/><br/>
       <input type="submit" value="Log in" />
     </fieldset>
   }

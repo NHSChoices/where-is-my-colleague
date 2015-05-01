@@ -8,33 +8,29 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        @Html.ActionLink("Where are your colleagues?", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-      </div>
-      <div class="navbar-collapse collapse">
-        <div class="float-right">
-          <section id="login">
-            @Html.Partial("_LoginPartial")
-          </section>
-        </div>
-        <ul class="nav navbar-nav">
-          <li>@Html.ActionLink("Status", "Status", "Users")</li>
-          <li>@Html.ActionLink("Register", "Register", "Users")</li>
-          <li>@Html.ActionLink("Login/Signup", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-        </ul>
+  <div id="navbar">
+    <div id="login-section">
+      <div class="float-right">
+        <section id="login">
+          @Html.Partial("_LoginPartial")
+        </section>
       </div>
     </div>
+    <div class="float-left">
+      <img class="logo" src="~/images/nhschoices_logo_lg.gif" alt="Logo"/>
+    </div>
+    <div id="navbar-header">
+      @Html.ActionLink("Where are your colleagues?", "Status", "Users", new { area = "" }, new { @class = "navbar-brand" })
+    </div>
+    <p class="navbar-nav">
+      @Html.ActionLink("Status", "Status", "Users")
+      @Html.ActionLink("Register", "Register", "Users")
+      @Html.ActionLink("Login/Signup", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
   </div>
-  <div class="container body-content">
+  <div id="navbar-separator"></div>
+  <div id="container">
     @RenderBody()
-    <footer></footer>
   </div>
 </body>
 </html>
