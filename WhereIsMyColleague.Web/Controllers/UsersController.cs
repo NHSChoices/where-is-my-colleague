@@ -29,12 +29,17 @@
     [Route("register")]
     public ActionResult Register(User user)
     {
-      if (!ModelState.IsValid)
+      if (user.Duration != 0)
       {
-        return View("RegistrationForm");
+        user.IsHalfDay = true;
       }
 
-      return View(_userRepository.Register(user));
+      if (!user.IsHalfDay || user.Duration == null)
+      {
+        ModelState.Remove("SecondLocation");
+      }
+
+      return !ModelState.IsValid ? View("RegistrationForm") : View(_userRepository.Register(user));
     }
 
     [HttpGet]
