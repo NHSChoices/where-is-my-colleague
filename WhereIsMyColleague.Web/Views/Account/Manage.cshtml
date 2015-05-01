@@ -4,12 +4,12 @@
 }
 
 <hgroup class="title">
-  <h1>@ViewBag.Title.</h1>
+  <h1 class="manage-header">@ViewBag.Title.</h1>
 </hgroup>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<p class="p-font">You are logged in as <strong>@User.Identity.Name</strong>.</p>
 
 @if (ViewBag.HasLocalPassword)
 {
@@ -23,6 +23,6 @@ else
 <section id="externalLogins">
   @Html.Action("RemoveExternalLogins")
 
-  <h3>Add an external login</h3>
+  <h3 class="add-external-header">Add an external login</h3>
   @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>

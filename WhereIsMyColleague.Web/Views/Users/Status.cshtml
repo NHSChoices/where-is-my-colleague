@@ -6,18 +6,17 @@
 }
 
 
-
-@if (@Model.Any())
-{
+  @if (@Model.Any())
+  {
     foreach (var user in @Model.Where(user => user.TimeStamp == dateTime))
     {
-        if (user.Duration.ToString() == "AllDay")
-        {
-            <li>@user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)</li>
-        }
-        else
-        {
-            <li>@user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration)</li>
-        }
+      if (user.Duration.ToString() == "AllDay")
+      {
+        <li class="li-font">@user.Name is located at @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)</li>
+      }
+      else
+      {
+        <li class="li-font">@user.Name is located at @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration)</li>
+      }
     }
-}
+  }
