@@ -1,17 +1,19 @@
 ﻿@model WhereIsMyColleague.Web.Models.User
 
 @using (Html.BeginForm())
-{
-  @Html.ValidationSummary(true)
-  
+{ 
   <div id="register-form">
     <p>@Html.LabelFor(x => x.Name)</p>
+    @Html.ValidationMessageFor(x => x.Name)
     <p>@Html.EditorFor(x => x.Name)</p><br/>
     <p>@Html.LabelFor(x => x.Location)</p>
+    @Html.ValidationMessageFor(x => x.Location)
     <p>@Html.EnumDropDownListFor(x => x.Location)</p><br/>
     <p>@Html.LabelFor(x => x.Duration)</p>
+    @Html.ValidationMessageFor(x => x.Duration)
     <p>@Html.EnumDropDownListFor(x => x.Duration)</p><br/>
     <p>@Html.LabelFor(x => x.SecondLocation, new { id = "SecondLocationID" })</p>
+    @Html.ValidationMessageFor(x => x.SecondLocation, null, new { id = "SecondLocationErrorMsg" })
     <p>@Html.EnumDropDownListFor(x => x.SecondLocation)</p><br />
 
     <input class="submit-button" type="submit" value="Register" />
