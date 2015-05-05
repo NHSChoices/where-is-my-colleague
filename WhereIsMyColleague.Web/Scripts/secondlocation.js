@@ -1,8 +1,5 @@
 ﻿$(function () {
 
-  $('#SecondLocationID').hide();
-  $('#SecondLocation').hide();
-
   $(window).load(function () {
     if ($('#Duration').val() == 0 || $('#Duration').val() == null) {
       $('#SecondLocationID').hide();
@@ -11,6 +8,20 @@
       $('#SecondLocationID').show();
       $('#SecondLocation').show();
     }
+  });
+
+  var savedSelection = null;
+  $('#Location').change(function () {
+    var selectedValue = $('#Location option:selected');
+    if (selectedValue != "") {
+      $('#SecondLocation option[value=' + selectedValue.val() + ']').remove();
+    }
+
+    if (savedSelection != null) {
+      $('#SecondLocation').append($('<option>', { value: savedSelection.val() }).text(savedSelection.text()));
+    }
+
+    savedSelection = selectedValue;
   });
 
   $('#Duration').change(function () {
