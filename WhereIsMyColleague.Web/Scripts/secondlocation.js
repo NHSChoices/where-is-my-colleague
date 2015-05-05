@@ -20,6 +20,7 @@
     } else {
       $('#SecondLocationID').hide();
       $('#SecondLocation').hide();
+      $('#SecondLocationErrorMsg').hide();
     }
   });
 });
