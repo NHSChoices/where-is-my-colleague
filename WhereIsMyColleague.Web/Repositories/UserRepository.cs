@@ -38,7 +38,9 @@
           Name = d.Name,
           Location = d.Location,
           Duration = d.Duration,
-          TimeStamp = d.TimeStamp
+          SecondLocation = d.SecondLocation,
+          TimeStamp = d.TimeStamp,
+          IsHalfDay = d.IsHalfDay
         });
         return users;
       }
@@ -52,7 +54,9 @@
         Name = user.Name,
         Location = user.Location,
         Duration = user.Duration,
-        TimeStamp = DateTime.Now.ToShortDateString()
+        SecondLocation = user.SecondLocation,
+        TimeStamp = DateTime.Now.ToShortDateString(),
+        IsHalfDay = user.IsHalfDay
       };
 
       var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) };

@@ -2,11 +2,28 @@
 
 @if (Model != null)
 {
-    <h2 class="h2-font">Success!</h2>
-    <p class="p-font">You have just been registered as working from @Html.DisplayFor(model => model.Location).</p>
+  <h2 class="h2-font">Hooray!</h2>
+  switch (Model.Duration.ToString())
+  {
+    case "AllDay":
+      <p class="p-font">
+        @Model.Name is located @@ @Html.DisplayFor(modelItem => Model.Location), @Html.DisplayFor(modelItem => Model.Duration)
+      </p>
+      break;
+    case "Morning":
+    <p class="p-font">
+      @Model.Name is located @@ @Html.DisplayFor(modelItem => Model.Location) in the @Html.DisplayFor(modelItem => Model.Duration), and @Html.DisplayFor(modelItem => Model.SecondLocation) in the afternoon
+    </p>
+      break;
+    case "Afternoon":
+    <p class="p-font">
+      @Model.Name is located @@ @Html.DisplayFor(modelItem => Model.Location) in the @Html.DisplayFor(modelItem => Model.Duration), and @Html.DisplayFor(modelItem => Model.SecondLocation) in the morning
+    </p>
+      break;
+  }
 }
 else
 {
-    <h2 class="h2-font">Oops.</h2>
-    <p class="p-font">Something has gone wrong, please try again.</p>
+  <h2 class="h2-font">Oops.</h2>
+  <p class="p-font">Something has gone wrong, please try again.</p>
 }

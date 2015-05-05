@@ -1,9 +1,9 @@
 ﻿namespace WhereIsMyColleague.API.Controllers
 {
+  using System.Collections.Generic;
   using Models;
   using Repositories;
   using System;
-  using System.Linq;
   using System.Web.Http;
 
   [RoutePrefix("users")]
@@ -25,16 +25,38 @@
     [HttpGet]
     public IHttpActionResult Get()
     {
-      var userList = _userRepository.GetAll();
-      var users = userList.Select(u => new UserRequest
-      {
-        Name = u.RowKey,
-        Location = (LocationEnum)Enum.Parse(typeof(LocationEnum), u.PartitionKey),
-        Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), u.Duration),
-        TimeStamp = u.TimeStamp
-      });
+      var userListRequest = _userRepository.GetAll();
 
-      return Ok(users);
+      var userList = new List<UserRequest>();
+      foreach (var user in userListRequest)
+      {
+        if (user.Duration == "AllDay")
+        {
+          ModelState.Remove("SecondLocation");
+
+          userList.Add(new UserRequest
+          {
+            Name = user.RowKey,
+            Location = (LocationEnum) Enum.Parse(typeof (LocationEnum), user.PartitionKey),
+            Duration = (DurationEnum) Enum.Parse(typeof (DurationEnum), user.Duration),
+            TimeStamp = user.TimeStamp
+          });
+        }
+        else
+        {
+          userList.Add(new UserRequest
+            {
+              Name = user.RowKey,
+              Location = (LocationEnum) Enum.Parse(typeof (LocationEnum), user.PartitionKey),
+              Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), user.Duration),
+              SecondLocation = (LocationEnum)Enum.Parse(typeof(LocationEnum), user.SecondLocation),
+              TimeStamp = user.TimeStamp,
+              IsHalfDay = true
+            });
+        }
+      }
+
+      return Ok(userList);
     }
 
     [Route("{id}", Name = "GetUserById")]
@@ -52,17 +74,27 @@
         return BadRequest(ModelState);
       }
 
-      var user = new UserDTO
+      var user = new UserDTO();
+
+      if (!userRequest.IsHalfDay)
       {
-        RowKey = userRequest.Name,
-        PartitionKey = userRequest.Location.ToString(),
-        Duration = userRequest.Duration.ToString(),
-        TimeStamp = userRequest.TimeStamp
-      };
+        user.RowKey = userRequest.Name;
+        user.PartitionKey = userRequest.Location.ToString();
+        user.Duration = userRequest.Duration.ToString();
+        user.TimeStamp = userRequest.TimeStamp;
+      }
+      else
+      {
+        user.RowKey = userRequest.Name;
+        user.PartitionKey = userRequest.Location.ToString();
+        user.Duration = userRequest.Duration.ToString();
+        user.SecondLocation = userRequest.SecondLocation.ToString();
+        user.TimeStamp = userRequest.TimeStamp;
+      }
 
       _userRepository.Register(user);
 
-      return CreatedAtRoute("GetUserById", new {id = user.RowKey}, user);
+      return CreatedAtRoute("GetUserById", new { id = user.RowKey }, user);
     }
 
     [Route("{id}")]
