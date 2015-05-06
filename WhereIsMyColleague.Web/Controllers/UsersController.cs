@@ -46,7 +46,13 @@
     [Route("register")]
     public ActionResult RegistrationForm()
     {
-      return View();
+      var model = new User
+      {
+        Location = LocationEnum.BridgeWaterPlace,
+        Duration = DurationEnum.AllDay,
+        SecondLocation = LocationEnum.Home
+      };
+      return View(model);
     }
   }
 }
