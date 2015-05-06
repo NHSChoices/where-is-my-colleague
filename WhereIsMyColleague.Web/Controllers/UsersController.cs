@@ -1,5 +1,7 @@
 ﻿namespace WhereIsMyColleague.Web.Controllers
 {
+  using System;
+  using System.Web;
   using Models;
   using Repositories;
   using System.Web.Mvc;
@@ -39,6 +41,14 @@
         ModelState.Remove("SecondLocation");
       }
 
+      HttpCookie usernameCookie = new HttpCookie("usernameCookie");
+      usernameCookie.Values.Add("username", user.Name);
+      usernameCookie.Expires = DateTime.Now.AddYears(10);
+      if (user.Name != null)
+      {
+        Response.Cookies.Add(usernameCookie);
+      }
+
       return !ModelState.IsValid ? View("RegistrationForm") : View(_userRepository.Register(user));
     }
 
@@ -52,6 +62,16 @@
         Duration = DurationEnum.AllDay,
         SecondLocation = LocationEnum.Home
       };
+
+      HttpCookie usernameCookie = Request.Cookies["usernameCookie"];
+      if (usernameCookie != null)
+      {
+        if (!string.IsNullOrEmpty(usernameCookie.Values["username"]))
+        {
+          model.Name = usernameCookie.Values["username"];
+        }
+      }
+
       return View(model);
     }
   }
