@@ -1,6 +1,6 @@
-﻿a:link { color: white;}
+﻿a:link { color: black;}
 a:hover { color: white;}
-a:visited { color: white;}
+a:visited { color: black;}
 
 .field-validation-error {
   color: red;
@@ -13,14 +13,14 @@ a:visited { color: white;}
 #container {
   height: 700px;
   width: 1024px;
-  background: #FFFFFF;
+  background: whitesmoke;
   margin: auto;
   text-align: center;
   padding-top: 20px;
 }
 
 #navbar {
-  background: #008AE6;
+  background: lightgrey;
   width: 1024px;
   height: 120px;
   margin: auto;
