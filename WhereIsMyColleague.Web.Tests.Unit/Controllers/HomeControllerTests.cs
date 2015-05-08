@@ -12,7 +12,7 @@
     {
       var controller = new HomeController();
 
-      var result = controller.Index() as ViewResult;
+      var result = controller.Index() as RedirectToRouteResult;
 
       Assert.That(result, Is.Not.Null);
     }
