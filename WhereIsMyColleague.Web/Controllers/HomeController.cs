@@ -7,7 +7,7 @@
     [Route]
     public ActionResult Index()
     {
-      return View();
+      return View("~/Views/Users/RegistrationForm.cshtml");
     }
   }
 }
