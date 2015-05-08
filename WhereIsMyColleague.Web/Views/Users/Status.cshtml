@@ -2,23 +2,19 @@
 
 @{
   ViewBag.Title = "User List Page";
-  var dateTime = DateTime.Now.ToShortDateString();
-  bool filterUsers = Model.LocationFilter != 0;
 }
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(x => x.LocationFilter)<br>
+  <p class="p-font">@Html.LabelFor(x => x.LocationFilter)</p>
   @Html.EnumDropDownListFor(x => x.LocationFilter, new { onchange = "submit();" })
 }
 
-<br/><br/>
+<br/>
 
 @if (@Model.User.Any())
 {
-  if (filterUsers)
-  {
-    foreach (var user in @Model.User.Where(user => user.TimeStamp == dateTime && user.Location == @Model.LocationFilter.Value))
+    foreach (var user in @Model.User)
     {
       switch (user.Duration.ToString())
       {
@@ -40,31 +36,5 @@
       }
     }
   }
-  else
-  {
-    foreach (var user in @Model.User.Where(user => user.TimeStamp == dateTime))
-    {
-      switch (user.Duration.ToString())
-      {
-        case "AllDay":
-          <li class="li-font">
-            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)
-          </li>
-          break;
-        case "Morning":
-          <li class="li-font">
-            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
-          </li>
-          break;
-        case "Afternoon":
-          <li class="li-font">
-            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
-          </li>
-          break;
-      }
-    }
-
-  }
-}
 
 

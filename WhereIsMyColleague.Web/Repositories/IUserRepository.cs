@@ -5,7 +5,7 @@
 
   public interface IUserRepository
   {
-    IEnumerable<User> GetAll();
+    IEnumerable<User> GetAll(string locationFilter);
 
     User Register(User user);
   }

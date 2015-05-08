@@ -18,7 +18,7 @@
     [Test, Ignore]
     public void should_call_api_for_users()
     {
-      var users = _repository.GetAll();
+      var users = _repository.GetAll(null);
 
       Assert.That(users, Is.Not.Null);
     }

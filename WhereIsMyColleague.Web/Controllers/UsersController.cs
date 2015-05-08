@@ -26,21 +26,47 @@ namespace WhereIsMyColleague.Web.Controllers
     [Route]
     public ViewResult Status(string locationFilter)
     {
-      var userList = _userRepository.GetAll();
+      switch (locationFilter)
+      {
+        #region Translates integral value to string
+        case "1":
+          locationFilter = "AnnualLeave";
+          break;
+        case "2":
+          locationFilter = "BridgeWaterPlace";
+          break;
+        case "3":
+          locationFilter = "Home";
+          break;
+        case "4":
+          locationFilter = "Ill";
+          break;
+        case "5":
+          locationFilter = "Offsite";
+          break;
+        case "6":
+          locationFilter = "Other";
+          break;
+        case "7":
+          locationFilter = "SkiptonHouse";
+          break;
+        case "8":
+          locationFilter = "Training";
+          break;
+        default:
+          locationFilter = null;
+          break;
+        #endregion
+      }
+
+      var userList = _userRepository.GetAll(locationFilter);
       var viewModel = new UsersViewModel()
       {
         User = userList,
-        LocationFilter = new LocationEnum()
+        LocationFilter = locationFilter == null ?
+        new LocationEnum() : (LocationEnum)Enum.Parse(typeof(LocationEnum), locationFilter)
       };
 
-      if (!String.IsNullOrWhiteSpace(locationFilter))
-      {
-        viewModel.LocationFilter = (LocationEnum) Enum.Parse(typeof (LocationEnum), locationFilter);
-      }
-      else
-      {
-        viewModel.LocationFilter = 0;
-      }
       return View(viewModel);
     }
 
@@ -76,8 +102,7 @@ namespace WhereIsMyColleague.Web.Controllers
       var model = new User
       {
         Location = LocationEnum.BridgeWaterPlace,
-        Duration = DurationEnum.AllDay,
-        SecondLocation = LocationEnum.Home
+        Duration = DurationEnum.AllDay
       };
 
       if (Request != null)
