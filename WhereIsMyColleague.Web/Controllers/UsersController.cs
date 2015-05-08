@@ -1,4 +1,6 @@
-﻿namespace WhereIsMyColleague.Web.Controllers
+﻿using Microsoft.Ajax.Utilities;
+
+namespace WhereIsMyColleague.Web.Controllers
 {
   using System;
   using System.Web;
@@ -22,9 +24,24 @@
     }
 
     [Route]
-    public ViewResult Status()
+    public ViewResult Status(string locationFilter)
     {
-      return View(_userRepository.GetAll());
+      var userList = _userRepository.GetAll();
+      var viewModel = new UsersViewModel()
+      {
+        User = userList,
+        LocationFilter = new LocationEnum()
+      };
+
+      if (!String.IsNullOrWhiteSpace(locationFilter))
+      {
+        viewModel.LocationFilter = (LocationEnum) Enum.Parse(typeof (LocationEnum), locationFilter);
+      }
+      else
+      {
+        viewModel.LocationFilter = 0;
+      }
+      return View(viewModel);
     }
 
     [HttpPost]
@@ -63,12 +80,15 @@
         SecondLocation = LocationEnum.Home
       };
 
-      HttpCookie usernameCookie = Request.Cookies["usernameCookie"];
-      if (usernameCookie != null)
+      if (Request != null)
       {
-        if (!string.IsNullOrEmpty(usernameCookie.Values["username"]))
+        HttpCookie usernameCookie = Request.Cookies["usernameCookie"];
+        if (usernameCookie != null)
         {
-          model.Name = usernameCookie.Values["username"];
+          if (!string.IsNullOrEmpty(usernameCookie.Values["username"]))
+          {
+            model.Name = usernameCookie.Values["username"];
+          }
         }
       }
 

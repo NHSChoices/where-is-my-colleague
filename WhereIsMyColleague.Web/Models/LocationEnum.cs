@@ -5,16 +5,16 @@
   public enum LocationEnum
   {
     [Display(Name = "Annual Leave")]
-    AnnualLeave,
+    AnnualLeave = 1,
     [Display(Name = "Bridgewater Place")]
-    BridgeWaterPlace,
-    Home,
-    Ill,
+    BridgeWaterPlace = 2,
+    Home = 3,
+    Ill = 4,
     [Display(Name = "Off-Site")]
-    Offsite,
-    Other,
+    Offsite = 5,
+    Other = 6,
     [Display(Name = "Skipton House")]
-    SkiptonHouse,
-    Training
+    SkiptonHouse = 7,
+    Training = 8
   }
 }
