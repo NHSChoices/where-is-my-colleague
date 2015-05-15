@@ -11,7 +11,6 @@
   [TestFixture]
   public class UsersControllerTests
   {
-    private readonly UserDto _userBeingRegistered = new UserDto();
     private readonly User _userToRegister = new User();
     private UsersController _controller;
     private IUserRepository _userRepository;
@@ -27,12 +26,15 @@
     public void status_should_use_users_from_repo_in_model()
     {
       var emptyUsers = new List<User>();
+      string locationFilter = "0";
+
       _userRepository.GetAll().Returns(emptyUsers);
 
-      var result = _controller.Status();
+      var result = _controller.Status(locationFilter);
+      var resultModel = (UsersViewModel) result.Model;
 
       Assert.That(result, Is.Not.Null);
-      Assert.That(result.Model, Is.EqualTo(emptyUsers));
+      Assert.That(resultModel.User, Is.EqualTo(emptyUsers));
     }
 
     [Test]
@@ -56,7 +58,6 @@
       Assert.That(result.Model, Is.EqualTo(registeredUser));
     }
 
-    [Ignore]
     [Test]
     public void registrationform_should_return_view()
     {

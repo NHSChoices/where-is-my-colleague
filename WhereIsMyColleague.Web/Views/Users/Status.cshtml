@@ -1,31 +1,70 @@
-﻿@model IEnumerable<WhereIsMyColleague.Web.Models.User>
+﻿@model WhereIsMyColleague.Web.Models.UsersViewModel
 
 @{
   ViewBag.Title = "User List Page";
   var dateTime = DateTime.Now.ToShortDateString();
+  bool filterUsers = Model.LocationFilter != 0;
 }
 
-@if (@Model.Any())
+@using (Html.BeginForm())
 {
-  foreach (var user in @Model.Where(user => user.TimeStamp == dateTime))
+  @Html.LabelFor(x => x.LocationFilter)<br>
+  @Html.EnumDropDownListFor(x => x.LocationFilter, new { onchange = "submit();" })
+}
+
+<br/><br/>
+
+@if (@Model.User.Any())
+{
+  if (filterUsers)
   {
-    switch (user.Duration.ToString())
+    foreach (var user in @Model.User.Where(user => user.TimeStamp == dateTime && user.Location == @Model.LocationFilter.Value))
     {
-      case "AllDay":
-        <li class="li-font">
-          @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)
-        </li>
-        break;
-      case "Morning":
-      <li class="li-font">
-        @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
-      </li>
-        break;
-      case "Afternoon":
-      <li class="li-font">
-        @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
-      </li>
-        break;
+      switch (user.Duration.ToString())
+      {
+        case "AllDay":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)
+          </li>
+          break;
+        case "Morning":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
+          </li>
+          break;
+        case "Afternoon":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
+          </li>
+          break;
+      }
     }
   }
+  else
+  {
+    foreach (var user in @Model.User.Where(user => user.TimeStamp == dateTime))
+    {
+      switch (user.Duration.ToString())
+      {
+        case "AllDay":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)
+          </li>
+          break;
+        case "Morning":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
+          </li>
+          break;
+        case "Afternoon":
+          <li class="li-font">
+            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
+          </li>
+          break;
+      }
+    }
+
+  }
 }
+
+
