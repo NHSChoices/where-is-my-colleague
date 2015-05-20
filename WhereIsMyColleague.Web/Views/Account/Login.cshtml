@@ -4,10 +4,15 @@
   ViewBag.Title = "Log in";
 }
 
+<p class="p-font-red">
+  CURRENTLY THERE IS NO BENEFIT TO CREATING AN ACCOUNT, THIS PAGE IS JUST HERE TO LOOK FANCY. HOWEVER AT SOME POINT YOU WILL BE ABLE TO CREATE
+  AN ACCOUNT WHERE YOU CAN BUILD A PROFILE TO MAKE REGISTERING MUCH EASIER.<br /><br />
+</p>
+
 <section class="float-left" id="social-login-form">
-  <h2 class="login-header">Signup</h2>
-  @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
-  <p>Please note that in order to login in you must select a provider and create an account for the site.</p>
+    <h2 class="login-header">Signup</h2>
+    @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+    <p>Please note that in order to login in you must select a provider and create an account for the site.</p>
 </section>
 
 <section id="login-form" class="float-right">

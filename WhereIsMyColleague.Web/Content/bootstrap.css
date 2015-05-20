@@ -146,6 +146,12 @@ p.p-font {
   font-family: sans-serif;
 }
 
+p.p-font-red {
+  font-family: sans-serif;
+  color: red;
+  font-size: 20px;
+}
+
 div.message-info {
   font-family: sans-serif;
 }
