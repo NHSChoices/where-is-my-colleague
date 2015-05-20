@@ -1,30 +1,55 @@
 ﻿@model WhereIsMyColleague.Web.Models.User
-
-@using (Html.BeginForm())
-{ 
-  <div id="register-form">
-    <p>@Html.LabelFor(x => x.Name)</p>
-    @Html.ValidationMessageFor(x => x.Name)
-    <p>@Html.EditorFor(x => x.Name)</p><br/>
-    <p>@Html.LabelFor(x => x.Location)</p>
-    @Html.ValidationMessageFor(x => x.Location)
-    <p>@Html.EnumDropDownListFor(x => x.Location)</p><br/>
-    <p>@Html.LabelFor(x => x.Duration)</p>
-    @Html.ValidationMessageFor(x => x.Duration)
-    <p>@Html.EnumDropDownListFor(x => x.Duration)</p><br/>
-    <p>@Html.LabelFor(x => x.SecondLocation, new { id = "SecondLocationID" })</p>
-    @Html.ValidationMessageFor(x => x.SecondLocation, null, new { id = "SecondLocationErrorMsg" })
-    <p>@Html.EnumDropDownListFor(x => x.SecondLocation)</p><br />
-
-    <input class="submit-button" type="submit" value="Register" />
-    
-    <br/>
-    <p class="p-font">This site is still in early stages. If you have any comments or feedback,
-    please enter them <a href="https://nhschoices.slack.com/messages/wfhsite/">here.</a>
-    </p>
+        
+<div class="wfh-page-header">
+  <div class="container-fluid header-container">
+    <h1 class="h1 wfh-page-header-font">Register</h1>
+    <p class="wfh-page-header-text-font">Fill in your details and let your colleagues know where you are!</p>
+  </div>
 </div>
-  
-}
+<div class="row">
+  <div class="col-xs-12" id="formContainer">
+    <div class="form-horizontal">
+      @using (Html.BeginForm(new { @id = "userForm" }))
+      {
+        <div class="form-group">
+          <div class="col-xs-8 col-xs-offset-2 col-md-3 col-md-offset-3">
+            @Html.LabelFor(x => x.Name, new { @class = "control-label reg-form-label" })
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name, null, new { @class = "field-validation-error reg-val-label" })
+          </div>
+          <div class="col-xs-8 col-xs-offset-2 col-md-3 col-md-offset-0 reg-form-div">
+            @Html.LabelFor(x => x.Location, new { @class = "control-label reg-form-label" })
+            @Html.EnumDropDownListFor(x => x.Location, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Location, null, new { @class = "field-validation-error reg-val-label" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-8 col-xs-offset-2 col-md-3 col-md-offset-3">
+            @Html.LabelFor(x => x.Duration, new { @class = "control-label reg-form-label" })
+            @Html.EnumDropDownListFor(x => x.Duration, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Duration, null, new { @class = "field-validation-error reg-val-label" })
+          </div>
+          <div class="col-xs-8 col-xs-offset-2 col-md-3 col-md-offset-0 reg-form-div">
+            @Html.LabelFor(x => x.SecondLocation, new { @class = "control-label reg-form-label", id = "SecondLocationID" })
+            @Html.EnumDropDownListFor(x => x.SecondLocation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SecondLocation, null, new { @class = "field-validation-error reg-val-label", id = "SecondLocationErrorMsg" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-2 col-xs-offset-2 col-md-2 col-md-offset-3">
+            <button class="btn btn-lg btn-primary" type="submit">Register</button>
+          </div>
+        </div>
+      }
+    </div>
+    <hr/>
+    <div class="col-xs-12">This site is still in early stages. If you have any comments or feedback, please enter them <a href="https://nhschoices.slack.com/messages/wfhsite/">here.</a>  </div>
+
+  </div>
+</div>
 
 <script src="~/Scripts/jquery-1.11.2.min.js"></script>
 <script src="~/Scripts/secondlocation.js"></script>
+<script src="~/Scripts/activateNavBar.js"></script>

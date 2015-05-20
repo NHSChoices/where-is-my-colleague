@@ -1,0 +1,169 @@
+﻿/* LAYOUT CSS */
+
+.navbar-default .navbar-nav > .active > a {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
+.body-content {
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eee;
+  width: auto;
+  padding: 0; /* 30px 15px */
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  text-align: center;
+  background-color: #fff;
+}
+
+.wfh-page-header {
+  background-color: #337ab7;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+
+.wfh-page-header-font {
+  color: white;
+  text-align: left;
+  font-size: 20px;
+}
+
+.wfh-page-header-text-font {
+  color: #B5D2EC;
+  text-align: left;
+  font-size: 16px;
+}
+
+@media (min-width: 321px) {
+  .wfh-page-header {
+    background-color: #337ab7;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 40px;
+  }
+
+  .wfh-page-header-font {
+    color: white;
+    text-align: left;
+    font-size: 24px;
+  }
+
+  .wfh-page-header-text-font {
+    color: #B5D2EC;
+    text-align: left;
+    font-size: 18px;
+  }  
+}
+
+@media (min-width: 768px) {
+  .wfh-page-header {
+    background-color: #337ab7;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 40px;
+  }
+
+  .wfh-page-header-font {
+    color: white;
+    text-align: left;
+    font-size: 60px;
+  }
+
+  .wfh-page-header-text-font {
+    color: #B5D2EC;
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
+.header-container {
+  margin-left: 10%;
+}
+
+.field-validation-error {
+  color: #ff0000;
+  text-align: right;
+}
+
+.reg-form-label {
+  float: left;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .reg-form-label {
+    float: left;
+    font-size: 24px;
+  }  
+}
+
+.reg-val-label {
+  float: left;
+}
+
+.reg-form-div {
+  padding-top: 15px;
+}
+
+@media (min-width: 992px) {
+  .reg-form-div {
+    padding-top: 0px;
+  }
+
+  .btn-default, .btn-primary {
+    float: left;
+  }
+}
+
+/* STATUS PAGE */
+
+.status-label {
+  font-size: 24px;
+}
+
+.filter-dropdown {
+  margin: auto;
+}
+
+.status-list {
+  padding-bottom: 15px;
+}
+
+.status {
+  list-style-type: none;
+}
+
+/* LOGIN PAGE */
+
+.social-login {
+  float: left;
+}
+
+.login {
+  float: right;
+}
+
+.remember-me-checkbox {
+  float: left;
+  padding-right: 0;
+}
+
+.login-button-div {
+  padding-right: 0;
+}
+
+.login-button {
+  float: right;
+}
+
+.login-validation {
+  text-align: left;
+  padding: 0;
+}

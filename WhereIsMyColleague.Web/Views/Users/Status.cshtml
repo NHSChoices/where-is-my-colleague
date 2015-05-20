@@ -4,37 +4,59 @@
   ViewBag.Title = "User List Page";
 }
 
-@using (Html.BeginForm())
-{
-  <p class="p-font">@Html.LabelFor(x => x.LocationFilter)</p>
-  @Html.EnumDropDownListFor(x => x.LocationFilter, new { onchange = "submit();" })
-}
+<div class="wfh-page-header">
+  <div class="container-fluid header-container">
+    <h1 class="h1 wfh-page-header-font">Status</h1>
+    <p class="wfh-page-header-text-font">Filter through to find out where your colleagues are.</p>
+  </div>
+</div>
 
-<br/>
+<form class="form-horizontal">
+  @using (Html.BeginForm())
+  {
+    <div class="form-group">
+      @Html.LabelFor(x => x.LocationFilter, new { @class = "col-xs-4 col-xs-offset-4 reg status-label" })
+      <div class="col-xs-12">
+        @Html.EnumDropDownListFor(x => x.LocationFilter, new { onchange = "submit();", @class = "form-control filter-dropdown" })
+      </div>
+    </div>
+  }
+</form>
 
-@if (@Model.User.Any())
-{
+<div class="col-xs-12 col-md-offset-2 col-md-8 status-list">
+  @if (@Model.User.Any())
+  {
     foreach (var user in @Model.User)
     {
       switch (user.Duration.ToString())
       {
         case "AllDay":
-          <li class="li-font">
+          <li class="status">
             @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location), @Html.DisplayFor(modelItem => user.Duration)
           </li>
           break;
         case "Morning":
-          <li class="li-font">
-            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
-          </li>
+        <li class="status">
+          @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the afternoon
+        </li>
           break;
         case "Afternoon":
-          <li class="li-font">
-            @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
-          </li>
+        <li class="status">
+          @user.Name is located @@ @Html.DisplayFor(modelItem => user.Location) in the @Html.DisplayFor(modelItem => user.Duration), and @Html.DisplayFor(modelItem => user.SecondLocation) in the morning
+        </li>
           break;
       }
     }
   }
+  else if (@Model.LocationFilter == 0 && !@Model.User.Any())
+  {
+    <p class="status">Where's everybody gone?!</p>
+  }
+  else
+  {
+    <p class="status">There's currently nobody in this location..</p>
+  }
+</div>
 
-
+<script src="~/Scripts/jquery-1.11.2.min.js"></script>
+<script src="~/Scripts/activateNavBar.js"></script>

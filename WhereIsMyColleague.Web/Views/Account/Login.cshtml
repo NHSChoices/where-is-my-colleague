@@ -4,36 +4,71 @@
   ViewBag.Title = "Log in";
 }
 
-<p class="p-font-red">
-  CURRENTLY THERE IS NO BENEFIT TO CREATING AN ACCOUNT, THIS PAGE IS JUST HERE TO LOOK FANCY. HOWEVER AT SOME POINT YOU WILL BE ABLE TO CREATE
-  AN ACCOUNT WHERE YOU CAN BUILD A PROFILE TO MAKE REGISTERING MUCH EASIER.<br /><br />
-</p>
+<div class="wfh-page-header">
+  <div class="container-fluid header-container">
+    <h1 class="h1 wfh-page-header-font">Sign Up</h1>
+    <p class="wfh-page-header-text-font">
+      Sign in through your preffered social media account or create one of your own.
+    </p>
+  </div>
+</div>
 
-<section class="float-left" id="social-login-form">
-    <h2 class="login-header">Signup</h2>
+<div class="col-xs-12 col-md-10 col-md-offset-1">
+  <p class="alert">
+    CURRENTLY THERE IS NO BENEFIT TO CREATING AN ACCOUNT, THIS PAGE IS JUST HERE TO LOOK FANCY. HOWEVER AT SOME POINT YOU WILL BE ABLE TO CREATE
+    AN ACCOUNT WHERE YOU CAN BUILD A PROFILE TO MAKE REGISTERING MUCH EASIER.
+  </p>
+</div>
+
+<div class="col-md-6 col-xs-12 social-login">
+  <section id="social-login-form">
+    <h2>Signup</h2>
     @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
     <p>Please note that in order to login in you must select a provider and create an account for the site.</p>
-</section>
+  </section>
+</div>
 
-<section id="login-form" class="float-right">
-  <h2>Please login here</h2>
-  @using (Html.BeginForm("Login", "Account"))
-  {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<div class="col-md-6 col-xs-12 login">
+  <section id="login-form">
+    <h2>Please login here</h2>
+    <div class="form-horizontal">
+      @using (Html.BeginForm("Login", "Account"))
+      {
+        @Html.AntiForgeryToken()
 
-    <fieldset>
-          @Html.LabelFor(m => m.UserName)<br/>
-          @Html.TextBoxFor(m => m.UserName)<br/><br/>
-          @Html.ValidationMessageFor(m => m.UserName)<br/>
+        <div class="form-group">
+          @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 col-xs-4 control-label" })
+          <div class="col-md-9 col-xs-8">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+          </div>
+          <div class="col-xs-offset-5 col-xs-7 col-md-12 login-validation">
+            @Html.ValidationMessageFor(m => m.UserName)
+          </div>
+        </div>
 
-          @Html.LabelFor(m => m.Password)<br/>
-          @Html.PasswordFor(m => m.Password)<br/>
-          @Html.ValidationMessageFor(m => m.Password)
+        <div class="form-group">
+          @Html.LabelFor(m => m.Password, new { @class = "col-md-3 col-xs-4 control-label" })
+          <div class="col-md-9 col-xs-8">
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+          </div>
+          <div class="col-xs-offset-5 col-xs-7 col-md-12 login-validation">
+            @Html.ValidationMessageFor(m => m.Password)
+          </div>
+        </div>
 
-          @Html.CheckBoxFor(m => m.RememberMe)
-          @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })<br/><br/>
-      <input type="submit" value="Log in" />
-    </fieldset>
-  }
-</section>
+        <div class="form-group">
+          <div class="col-xs-offset-4 col-md-offset-3 col-md-3 remember-me-checkbox">
+            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox-inline" })
+            @Html.LabelFor(m => m.RememberMe)
+          </div>
+          <div class="col-xs-3 col-md-3 login-button-div">
+            <input class="btn btn-default login-button" type="submit" value="Log in" />
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>
+
+<script src="~/Scripts/jquery-1.11.2.min.js"></script>
+<script src="~/Scripts/activateNavBar.js"></script>

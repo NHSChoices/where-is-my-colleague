@@ -39,7 +39,6 @@
           Location = d.Location,
           Duration = d.Duration,
           SecondLocation = d.SecondLocation,
-          TimeStamp = d.TimeStamp,
           IsHalfDay = d.IsHalfDay
         });
         return users;
