@@ -1,6 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
-
-namespace WhereIsMyColleague.Web.Controllers
+﻿namespace WhereIsMyColleague.Web.Controllers
 {
   using System;
   using System.Web;

@@ -2,27 +2,25 @@
 
 @using (Html.BeginForm())
 { 
-  <div id="register-form">
-    <p>@Html.LabelFor(x => x.Name)</p>
+    <h3>@Html.LabelFor(x => x.Name)</h3>
     @Html.ValidationMessageFor(x => x.Name)
     <p>@Html.EditorFor(x => x.Name)</p><br/>
-    <p>@Html.LabelFor(x => x.Location)</p>
+    <h3>@Html.LabelFor(x => x.Location)</h3>
     @Html.ValidationMessageFor(x => x.Location)
     <p>@Html.EnumDropDownListFor(x => x.Location)</p><br/>
-    <p>@Html.LabelFor(x => x.Duration)</p>
+    <h3>@Html.LabelFor(x => x.Duration)</h3>
     @Html.ValidationMessageFor(x => x.Duration)
     <p>@Html.EnumDropDownListFor(x => x.Duration)</p><br/>
-    <p>@Html.LabelFor(x => x.SecondLocation, new { id = "SecondLocationID" })</p>
+    <h3>@Html.LabelFor(x => x.SecondLocation, new { id = "SecondLocationID" })</h3>
     @Html.ValidationMessageFor(x => x.SecondLocation, null, new { id = "SecondLocationErrorMsg" })
     <p>@Html.EnumDropDownListFor(x => x.SecondLocation)</p><br />
 
     <input class="submit-button" type="submit" value="Register" />
     
-    <br/>
+    <br/><br />
     <p class="p-font">This site is still in early stages. If you have any comments or feedback,
     please enter them <a href="https://nhschoices.slack.com/messages/wfhsite/">here.</a>
     </p>
-</div>
   
 }
 
