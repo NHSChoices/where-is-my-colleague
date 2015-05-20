@@ -22,14 +22,14 @@
       ApiUrl = WebConfigurationManager.AppSettings[apiUrl];
     }
 
-    public IEnumerable<User> GetAll()
+    public IEnumerable<User> GetAll(string locationFilter)
     {
       var client = new HttpClient { BaseAddress = new Uri(ApiUrl) };
 
       client.DefaultRequestHeaders.Accept.Add(
         new MediaTypeWithQualityHeaderValue("application/json"));
 
-      var response = client.GetAsync("users").Result;
+      var response = client.GetAsync("users?location=" + locationFilter).Result;
       if (response.IsSuccessStatusCode)
       {
         var userList = response.Content.ReadAsAsync<IEnumerable<UserDto>>().Result;

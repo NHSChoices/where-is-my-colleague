@@ -17,5 +17,6 @@
     public string Duration { get; set; }
     public string SecondLocation { get; set; }
     public string TimeStamp { get; set; }
+    public bool IsHalfDay { get; set; }
   }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WhereIsMyColleague.API.Controllers
 {
-  using System.Collections.Generic;
+  using System.Linq;
   using Models;
   using Repositories;
   using System;
@@ -23,40 +23,24 @@
 
     [Route]
     [HttpGet]
-    public IHttpActionResult Get()
+    public IHttpActionResult Get(string location = null, string duration = null, string name = null)
     {
-      var userListRequest = _userRepository.GetAll();
+      var userList = _userRepository.GetAll()
+        .Where(x => location != null ? x.PartitionKey == location : x.PartitionKey != null)
+        .Where(x => duration != null ? x.Duration == duration : x.Duration != null)
+        .Where(x => name != null ? x.RowKey == name : x.RowKey != null)
+        .Where(x => x.TimeStamp == DateTime.Now.ToShortDateString());
 
-      var userList = new List<UserRequest>();
-      foreach (var user in userListRequest)
+      var users = userList.Select(u => new UserRequest
       {
-        if (user.Duration == "AllDay")
-        {
-          ModelState.Remove("SecondLocation");
+        Name = u.RowKey,
+        Location = (LocationEnum) Enum.Parse(typeof(LocationEnum), u.PartitionKey),
+        Duration = (DurationEnum) Enum.Parse(typeof(DurationEnum), u.Duration),
+        SecondLocation = u.IsHalfDay ? (LocationEnum)Enum.Parse(typeof(LocationEnum), u.SecondLocation) : (LocationEnum?)null,
+        TimeStamp = u.TimeStamp
+      });
 
-          userList.Add(new UserRequest
-          {
-            Name = user.RowKey,
-            Location = (LocationEnum) Enum.Parse(typeof (LocationEnum), user.PartitionKey),
-            Duration = (DurationEnum) Enum.Parse(typeof (DurationEnum), user.Duration),
-            TimeStamp = user.TimeStamp
-          });
-        }
-        else
-        {
-          userList.Add(new UserRequest
-            {
-              Name = user.RowKey,
-              Location = (LocationEnum) Enum.Parse(typeof (LocationEnum), user.PartitionKey),
-              Duration = (DurationEnum)Enum.Parse(typeof(DurationEnum), user.Duration),
-              SecondLocation = (LocationEnum)Enum.Parse(typeof(LocationEnum), user.SecondLocation),
-              TimeStamp = user.TimeStamp,
-              IsHalfDay = true
-            });
-        }
-      }
-
-      return Ok(userList);
+      return Ok(users);
     }
 
     [Route("{id}", Name = "GetUserById")]
@@ -74,23 +58,15 @@
         return BadRequest(ModelState);
       }
 
-      var user = new UserDTO();
-
-      if (!userRequest.IsHalfDay)
+      var user = new UserDTO()
       {
-        user.RowKey = userRequest.Name;
-        user.PartitionKey = userRequest.Location.ToString();
-        user.Duration = userRequest.Duration.ToString();
-        user.TimeStamp = userRequest.TimeStamp;
-      }
-      else
-      {
-        user.RowKey = userRequest.Name;
-        user.PartitionKey = userRequest.Location.ToString();
-        user.Duration = userRequest.Duration.ToString();
-        user.SecondLocation = userRequest.SecondLocation.ToString();
-        user.TimeStamp = userRequest.TimeStamp;
-      }
+        RowKey = userRequest.Name,
+        PartitionKey = userRequest.Location.ToString(),
+        Duration = userRequest.Duration.ToString(),
+        SecondLocation = userRequest.SecondLocation.ToString(),
+        TimeStamp = userRequest.TimeStamp,
+        IsHalfDay = userRequest.IsHalfDay
+      };
 
       _userRepository.Register(user);
 

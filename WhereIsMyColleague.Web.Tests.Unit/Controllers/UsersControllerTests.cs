@@ -28,7 +28,7 @@
       var emptyUsers = new List<User>();
       string locationFilter = "0";
 
-      _userRepository.GetAll().Returns(emptyUsers);
+      _userRepository.GetAll(null).Returns(emptyUsers);
 
       var result = _controller.Status(locationFilter);
       var resultModel = (UsersViewModel) result.Model;
