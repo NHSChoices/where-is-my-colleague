@@ -8,11 +8,11 @@ build:
   verbosity: minimal
 deploy:
 - provider: WebDeploy
-  server: https://whereismycolleague.scm.azurewebsites.net:443/msdeploy.axd?site=whereismycolleague
-  website: whereismycolleague
-  username: $whereismycolleague
+  server: https://choiceswfh.scm.azurewebsites.net:443/msdeploy.axd?site=ChoicesWFH
+  website: ChoicesWFH
+  username: $ChoicesWFH
   password:
-    secure: epX63djwCcNjxpwWLCd5KP2rjTQGHKfo4FTY+uIKq1gJCdaZix0Dw6XD2SvWQvFKcN9QkbFw993Plwpb41JlNg==
+    secure: NDduFNg8Pyadg+HfoO4/ap6w7bQb13UHQ5MNLVLF9Cw+xyLGwvSMb5l7eVF/Betr++ICOQFRBAhpO/CKNTdtHg==
   remove_files: true
   app_offline: true
   artifact: WhereIsMyColleague.Web.zip
