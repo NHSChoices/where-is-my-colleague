@@ -1,13 +1,16 @@
 ﻿$(function () {
 
   var savedSelection = null;
+
   $(window).load(function () {
     if ($('#Duration').val() == 0 || $('#Duration').val() == null) {
       $('#SecondLocationID').hide();
       $('#SecondLocation').hide();
+      $('#secondLocationFormGroup').hide();
     } else {
       $('#SecondLocationID').show();
       $('#SecondLocation').show();
+      $('#secondLocationFormGroup').show();
     }
 
     var selectedValue = $('#Location option:selected');
@@ -39,10 +42,12 @@
     if ($('#Duration').val() != 0) {
       $('#SecondLocationID').show();
       $('#SecondLocation').show();
+      $('#secondLocationFormGroup').show();
     } else {
       $('#SecondLocationID').hide();
       $('#SecondLocation').hide();
       $('#SecondLocationErrorMsg').hide();
+      $('#secondLocationFormGroup').hide();
     }
   });
 });

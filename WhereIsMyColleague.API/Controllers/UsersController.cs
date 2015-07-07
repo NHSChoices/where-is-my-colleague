@@ -36,15 +36,14 @@
         Name = u.RowKey,
         Location = (LocationEnum) Enum.Parse(typeof(LocationEnum), u.PartitionKey),
         Duration = (DurationEnum) Enum.Parse(typeof(DurationEnum), u.Duration),
-        SecondLocation = u.IsHalfDay ? (LocationEnum)Enum.Parse(typeof(LocationEnum), u.SecondLocation) : (LocationEnum?)null,
-        TimeStamp = u.TimeStamp
+        SecondLocation = u.IsHalfDay ? (LocationEnum)Enum.Parse(typeof(LocationEnum), u.SecondLocation) : (LocationEnum?)null
       });
 
       return Ok(users);
     }
 
     [Route("{id}", Name = "GetUserById")]
-    public UserRequest GetUser(int id)
+    public UserRequest GetUser(string id)
     {
       throw new Exception("Not yet implemented");
     }

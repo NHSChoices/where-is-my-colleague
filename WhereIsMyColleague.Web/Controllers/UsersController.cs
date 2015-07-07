@@ -1,4 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using System.Linq;
 
 namespace WhereIsMyColleague.Web.Controllers
 {
@@ -74,14 +74,25 @@ namespace WhereIsMyColleague.Web.Controllers
     [Route("register")]
     public ActionResult Register(User user)
     {
-      if (user.Duration != 0)
-      {
-        user.IsHalfDay = true;
-      }
-
       if (!user.IsHalfDay || user.Duration == null)
       {
         ModelState.Remove("SecondLocation");
+      }
+
+      if (!ModelState.IsValid)
+      {
+        var state = ModelState.FirstOrDefault(x => x.Key.Equals("Name"));
+        if (state.Value.Errors.Any(x => x.ErrorMessage == "You entered your name incorrectly. Please try again"))
+        {
+          ModelState.Remove("Name");
+
+          user.Name = string.Empty;
+          ModelState.AddModelError("Name", "You entered your name incorrectly. Please try again");
+
+          return View("RegistrationForm", user);
+        }
+
+        return View("RegistrationForm");
       }
 
       HttpCookie usernameCookie = new HttpCookie("usernameCookie");
@@ -92,7 +103,7 @@ namespace WhereIsMyColleague.Web.Controllers
         Response.Cookies.Add(usernameCookie);
       }
 
-      return !ModelState.IsValid ? View("RegistrationForm") : View(_userRepository.Register(user));
+      return View(_userRepository.Register(user));
     }
 
     [HttpGet]
